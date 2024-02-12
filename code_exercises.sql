@@ -32,8 +32,10 @@ Foreign key: customer_id, book_id
 
 
 -- EXERCISE 4
-/*We are about to create a multicolumn index, but before we do let’s get some information prepared to make sure we are ready to analyze if it was a good or bad index to create.
-Use EXPLAIN ANALYZE to check the runtime of a query searching for the original_language, title, and sales_in_millions from the books table that have an original_language of 'French'. */
+/*
+We are about to create a multicolumn index, but before we do let’s get some information prepared to make sure we are ready to analyze if it was a good or bad index to create.
+Use EXPLAIN ANALYZE to check the runtime of a query searching for the original_language, title, and sales_in_millions from the books table that have an original_language of 'French'.
+*/
 
 /*
 EXPLAIN ANALYZE SELECT original_language, title, sales_in_millions

@@ -55,8 +55,7 @@ SELECT pg_size_pretty (pg_total_relation_size('books'));
 -- and the number of copies sold to see if it is worth the time and money in translating these books. Create an index to help speed up searching for this information.
 
 -- original langage, title, number of copies sold
-/*
-CREATE INDEX og_language_sold_idx ON books(original_language, title, sales_in_millions);
+-- CREATE INDEX og_language_sold_idx ON books(original_language, title, sales_in_millions);
 
 
 -- EXERCISE 7
@@ -64,10 +63,10 @@ CREATE INDEX og_language_sold_idx ON books(original_language, title, sales_in_mi
 -- To make a true assessment you would also have to look at other impacts of an index such as the impact on INSERT, UPDATE, and DELETE statements on the table. 
 -- With just the size and runtime of this query, do you think this is a useful index?
 
-SELECT pg_size_pretty (pg_total_relation_size('og_language_sold_idx'));
+-- SELECT pg_size_pretty (pg_total_relation_size('og_language_sold_idx'));
 -- size: 32 KB
 
-EXPLAIN ANALYZE SELECT og_language_sold_idx;
+-- EXPLAIN ANALYZE SELECT og_language_sold_idx;
 
 -- The lesson here is to always make sure you do your final testing in the environment that matters — your production database server.
 */

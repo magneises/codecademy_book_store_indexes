@@ -1,6 +1,6 @@
 -- EXERCISE 1
-/* Before we start having fun with the database, familiarize yourself with what we are starting with, look at the first 10 rows in each table; 
-customers, orders, and books to get a feel for what is in each. */
+-- Before we start having fun with the database, familiarize yourself with what we are starting with, look at the first 10 rows in each table; customers, orders, 
+-- and books to get a feel for what is in each.
 
 /*
 SELECT *
@@ -17,8 +17,8 @@ LIMIT 10;
 */
 
 -- EXERCISE 2
-/* Before you make any changes to a database and its tables, you should know what you are working with. 
-Examine the indexes that already exist on the three tables customers, books, and orders. */
+-- Before you make any changes to a database and its tables, you should know what you are working with. 
+-- Examine the indexes that already exist on the three tables customers, books, and orders.
 
 /* primary key: first_name, last_name, email_address
 
@@ -26,11 +26,10 @@ Foreign key: customer_id, book_id
 */
 
 -- EXERCISE 3
-/*
-You might have combined the two foreign keys into one multicolumn index, however, in this case, that might not be appropriate. The clue was that it was 
-identified that the request for both columns together was not as frequent, meaning that the individual indexes would be faster. Because of this, the 
-column you put second would be useless for searches on ones only for that column.
-*/
+-- You might have combined the two foreign keys into one multicolumn index, however, in this case, that might not be appropriate. The clue was that it was 
+-- identified that the request for both columns together was not as frequent, meaning that the individual indexes would be faster. Because of this, the 
+-- column you put second would be useless for searches on ones only for that column.
+
 
 -- EXERCISE 4
 /*We are about to create a multicolumn index, but before we do let’s get some information prepared to make sure we are ready to analyze if it was a good or bad index to create.

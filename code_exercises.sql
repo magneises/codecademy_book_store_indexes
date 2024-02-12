@@ -86,12 +86,13 @@ DROP INDEX IF EXISTS og_language_sold_idx;
 -- Let’s see how long this bulk insert will take. Since the syntax on how to do this was not part of the lesson, here is the script that will take the data 
 -- in the file orders_add.txt and insert the records into the orders table.*/
 
-
+/*
 SELECT NOW();
  
 \COPY orders FROM 'orders_add.txt' DELIMITER ',' CSV HEADER;
  
 SELECT NOW();
+*/
 
 -- EXERCISE 10
 
@@ -99,13 +100,11 @@ SELECT NOW();
 -- 2023-03-21 23:59:03.8366+00
 
 -- EXERCISE 11
-/*
-You honestly don’t have enough information at this point to say if it is a good or bad idea. In this very specific case, the size of the database probably doesn’t warrant it, but it also probably wouldn’t hurt much. So this might be a case where the little good/bad it causes might be worth it to make your boss happy.
-You would need to see the specific queries your boss is using (or having someone else run) to get the information and do a comparison of the run times for these as well as other queries that use the customers table to see how they are also impacted.
-You should think about what your boss is hoping to accomplish by doing this. You have had training now in what indexes are and what they are for. Most people have not. They may hear the jargon and just think it makes queries faster without knowing about any side effects. It would be your job to make sure you find out what they hope to accomplish and inform them on any possible consequences for it. For instance, your boss might want queries faster to get customer contact info. But if it impacts customers creating their own accounts, your boss might decide it is not worth it.
-You might be able to make the index even more useful. You could find out if last_name should be included as well or if any other columns are regularly used along with this information.
-Some downsides of creating this index are the increased size of the table and speed impacts on insert, update, and delete of records. In this case, these would directly impact your customers so it would be critical your boss is aware of this possible impact.
-*/
+-- ANSWER: You honestly don’t have enough information at this point to say if it is a good or bad idea. In this very specific case, the size of the database probably doesn’t warrant it, but it also probably wouldn’t hurt much. So this might be a case where the little good/bad it causes might be worth it to make your boss happy.
+-- You would need to see the specific queries your boss is using (or having someone else run) to get the information and do a comparison of the run times for these as well as other queries that use the customers table to see how they are also impacted.
+-- You should think about what your boss is hoping to accomplish by doing this. You have had training now in what indexes are and what they are for. Most people have not. They may hear the jargon and just think it makes queries faster without knowing about any side effects. It would be your job to make sure you find out what they hope to accomplish and inform them on any possible consequences for it. For instance, your boss might want queries faster to get customer contact info. But if it impacts customers creating their own accounts, your boss might decide it is not worth it.
+-- You might be able to make the index even more useful. You could find out if last_name should be included as well or if any other columns are regularly used along with this information.
+-- Some downsides of creating this index are the increased size of the table and speed impacts on insert, update, and delete of records. In this case, these would directly impact your customers so it would be critical your boss is aware of this possible impact.
 
 
 

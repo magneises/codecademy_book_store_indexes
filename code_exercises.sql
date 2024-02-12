@@ -32,10 +32,9 @@ Foreign key: customer_id, book_id
 
 
 -- EXERCISE 4
-/*
-We are about to create a multicolumn index, but before we do let’s get some information prepared to make sure we are ready to analyze if it was a good or bad index to create.
-Use EXPLAIN ANALYZE to check the runtime of a query searching for the original_language, title, and sales_in_millions from the books table that have an original_language of 'French'.
-*/
+-- We are about to create a multicolumn index, but before we do let’s get some information prepared to make sure we are ready to analyze if it was a good or bad index to create.
+-- Use EXPLAIN ANALYZE to check the runtime of a query searching for the original_language, title, and sales_in_millions from the books table that have an original_language of 'French'.
+
 
 /*
 EXPLAIN ANALYZE SELECT original_language, title, sales_in_millions
@@ -44,7 +43,7 @@ WHERE original_language = 'French';
 */
 
 -- EXERCISE 5
-/*Remember, runtime isn’t the only impact that indexes have, they also impact the size of your table, so let’s get the size of the books table using*/
+-- Remember, runtime isn’t the only impact that indexes have, they also impact the size of your table, so let’s get the size of the books table using
 
 /*
 SELECT pg_size_pretty (pg_total_relation_size('books'));
@@ -52,9 +51,8 @@ SELECT pg_size_pretty (pg_total_relation_size('books'));
 */
 
 -- EXERCISE 6
-/*
-Now let’s take a look at the situation you were preparing for. Your translation team needs a list of the language they are written in, book titles, 
-and the number of copies sold to see if it is worth the time and money in translating these books. Create an index to help speed up searching for this information.*/
+-- Now let’s take a look at the situation you were preparing for. Your translation team needs a list of the language they are written in, book titles, 
+-- and the number of copies sold to see if it is worth the time and money in translating these books. Create an index to help speed up searching for this information.
 
 -- original langage, title, number of copies sold
 /*
@@ -62,9 +60,9 @@ CREATE INDEX og_language_sold_idx ON books(original_language, title, sales_in_mi
 
 
 -- EXERCISE 7
-/*Now that you have your index let’s repeat our process in tasks 1 and 2 and compare the runtime and size with our index in place. 
-To make a true assessment you would also have to look at other impacts of an index such as the impact on INSERT, UPDATE, and DELETE statements on the table. 
-With just the size and runtime of this query, do you think this is a useful index?*/
+-- Now that you have your index let’s repeat our process in tasks 1 and 2 and compare the runtime and size with our index in place. 
+-- To make a true assessment you would also have to look at other impacts of an index such as the impact on INSERT, UPDATE, and DELETE statements on the table. 
+-- With just the size and runtime of this query, do you think this is a useful index?
 
 SELECT pg_size_pretty (pg_total_relation_size('og_language_sold_idx'));
 -- size: 32 KB
@@ -75,18 +73,18 @@ EXPLAIN ANALYZE SELECT og_language_sold_idx;
 */
 
 -- EXERCISE 8
-/*After running your site for a while, you find that you’re often inserting new books into your books table as new books get released. 
-However, many of these books don’t sell enough copies to be worth translating, so your index has proven to be more costly than beneficial. 
-Delete the multicolumn index we created above to make it so inserts into the books will run quickly.*/
+-- After running your site for a while, you find that you’re often inserting new books into your books table as new books get released. 
+-- However, many of these books don’t sell enough copies to be worth translating, so your index has proven to be more costly than beneficial. 
+-- Delete the multicolumn index we created above to make it so inserts into the books will run quickly.
 
 /*
 DROP INDEX IF EXISTS og_language_sold_idx;
 */
+
 -- EXERCISE 9
-/* The company you work for has bought out a competitor bookstore. You will need to load all of their orders into your orders table with a bulk copy. 
-Let’s see how long this bulk insert will take. Since the syntax on how to do this was not part of the lesson, here is the script that will take the data 
-in the file orders_add.txt and insert the records into the orders table.*/
-/*
+-- The company you work for has bought out a competitor bookstore. You will need to load all of their orders into your orders table with a bulk copy. 
+-- Let’s see how long this bulk insert will take. Since the syntax on how to do this was not part of the lesson, here is the script that will take the data 
+-- in the file orders_add.txt and insert the records into the orders table.*/
 
 
 SELECT NOW();
